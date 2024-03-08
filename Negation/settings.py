@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9bm!@ployn)7rzv@3785-=p(_@5(@i-b6!owqssieatn%e9xns
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'clinicaltextmining.com', 'www.clinicaltextmining.com' , '107.21.9.210']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sonatafyai.com', 'www.sonatafyai.com' , '18.207.202.129']
 
 
 # Application definition
