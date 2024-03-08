@@ -1,0 +1,443 @@
+{% load static%}
+<html>
+<head>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'simple/css/style.css' %}">
+
+</head>
+
+<body class="body">
+    <div class="container" style="margin-bottom: 20px;">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary" style="margin-bottom: 20px;">
+            <a class="navbar-brand" href="http://www.clinicaltextmining.com" style="margin-left: 20px;">SIMPLE</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="acerca_de_simple">Acerca de SIMPLE</a>
+                </li>
+                <!--<li class="nav-item">
+                  <a class="nav-link" href="metodologia.html" disabled>Metodología</a>
+                </li>-->
+      		<li class="nav-item">
+		<a class="nav-link" href="historias_clinicas" disabled>Historias clínicas</a>
+		</li>          
+                <li class="nav-item">
+                  <a class="nav-link" href="#" disabled>Créditos</a>
+                </li>
+		<li class="nav-item">
+                <a class="nav-link" href="agradecimientos" disabled>Agradecimientos</a>
+                </li>
+              </ul>
+              
+            </div>
+          </nav>
+    
+          <div class="text-xl-center text-secondary" style="margin-top: 30px; margin-bottom: 20px;">
+            <h1>SIMPLE</h1>
+            <h3>Sistema Informático Médico con Procesamiento de Lenguaje</h3>
+        </div>
+
+	<div class="text-xl-center text-secondary" style="margin-bottom: 15px;">
+		<h4>Créditos</h4>
+	</div>
+
+	<div class="card">
+  <div class="card-header">
+    Cómo citar SIMPLE
+  </div>
+  <div class="card-body">
+    <p class="card-text">Si hace uso de esta aplicación, debe citar los siguientes artículos:</p>
+    <p>Tamayo, A., Gelbukh, A., & Burgos, D. A. (2022, October). Nlp-cic-wfu at socialdisner: Disease mention extraction in spanish tweets using transfer learning and search by propagation. In Proceedings of The Seventh Workshop on Social Media Mining for Health Applications, Workshop & Shared Task (pp. 19-22).</p>
+    <p>Tamayo, A., Burgos, D., & Gelbukh, A. (2022). ParTNER: Paragraph Tuning for Named Entity Recognition on Clinical Cases in Spanish using mBERT+ Rules. In CEUR Workshop Proceedings (Vol. 3202). CEUR-WS.</p>
+    <p>Tamayo, A., Burgos, D. A., & Gelbukh, A. (2022). mbert and simple post-processing: A baseline for disease mention detection in spanish. In Working Notes of Conference and Labs of the Evaluation (CLEF) Forum. CEUR Workshop Proceedings.</p>
+  </div>
+</div>
+      <div class="card">
+  <div class="card-header">
+    Proyecto, sistema y desarrollo
+  </div>
+  <div class="card-body">
+    <p class="card-text">SIMPLE es una aplicación web derivada del proyecto denominado sistema informático médico con procesamieto de lenguaje, cuyo
+	investigador principal es el Dr. Antonio Jesús Tamayo Herrera. El sistema y la aplicación fueron desarrolladas en su 
+	totalidad por el investigador principal. Este proyecto es parte del trabajo de tesis doctoral del Dr. Antonio Jesús Tamayo Herrera, en el que se
+	trabaja la minería de datos en el dominio médico a través de la identificación del fenómeno de la negación, las especulaciones y el reconocimiento de entidades nombradas.
+	<br><br>
+	Contacto: antonio.tamayo.phd@gmail.com | atamayoh2019@cic.ipn.mx | antonio.tamayo@udea.edu.co
+
+</p>
+  </div>
+</div>
+    <div class="card">
+  <div class="card-header">
+    Historias clínicas
+  </div>
+  <div class="card-body">
+  <p class="card-text">
+   Para las pruebas del sistema SIMPLE se usaron las historias clínicas del Spanish Clinical Case Corpus (SPACCC).
+
+<br><br>   
+SPACCC: Spanish Clinical Case Corpus
+<br>
+This repository contains the Spanish Clinical Case Corpus. 
+
+<br><br>
+Document selection
+<br>
+The SPACCC corpus was created after collecting 1,000 clinical cases from SciELO (Scientific Electronic Library Online), 
+an electronic library that gathers electronic publications of complete full text articles from scientific journals of 
+Latin America, South Africa and Spain (http://www.scielo.org).
+<br>
+A clinician classified those cases into those that were similar to real clinical texts in terms of structure and content 
+and those that were not suitable for this task. Figure legends were automatically removed and in case multiple clinical 
+cases were listed, these were split into single clinical cases.
+<br><br>
+
+License
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+Copyright (c) 2018 Secretaría de Estado para el Avance Digital (SEAD)
+
+
+</p>
+  </div>
+</div>
+
+
+
+<!--
+    <div style="margin-bottom: 50px;">
+        <form name="datos" method="POST" action="">{% csrf_token %}
+            <div class="form-group">
+                <textarea class="form-control" type="text" id="t1" name="texto1" rows="5" placeholder="Ingrese la historia cl&iacute;nica aqu&iacute;..."></textarea>
+                <br>
+                <input class="btn btn-secondary" id="extraer_info" type="submit" value="Extraer información relevante"/> 
+                {% if not hallazgos_presentes %}
+                <div class="d-flex align-items-center" style="display: none; margin-top: 10px;">
+                    <strong id="cargando" style="display: none;">Cargando...</strong>
+                    <div class="spinner-border ml-auto" id="spinner" style="display: none;" role="status" aria-hidden="true"></div>
+                </div>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+-->
+
+    {% if msg %}
+        <div>
+            <table class="table table-striped">
+                <tr>
+                <th>Forma</th> <th>Lema</th> <th>Categor&iacute;a gramatical</th>
+                </tr>
+                <tr>
+                {%for p in msg%}
+                    {%for i in p%}
+                        <td>
+                        {{i}}
+                        </td>
+                    {% endfor %}
+                    </tr>
+                {%endfor%}
+            </table>
+        </div>
+    {%endif%}
+    
+    <!--
+    {%if entidades%}
+
+        <div class="entidades">
+            <h3>Entidades</h3>
+            <br>
+            <table>
+            {%for ent in entidades%}
+                <tr>
+                {% for e in  ent|slice:":1"%}
+
+                        <td>{{e}}</td>
+                {% endfor %}
+                </tr>
+            {%endfor%}
+            </table>
+        </div>
+
+    {% endif %}
+
+    -->
+
+    <!--
+    <div style="margin-bottom: 20px;">
+        <h3 class="text-xl-center text-secondary">Información más relevante de la historia clínica</h3>
+    </div>
+    -->
+
+    {%if info_general %}
+
+    <hr class="mt-2 mb-3"/>
+        
+    <div class="hallazgos" style="margin-bottom: 25px;">
+        <h5 class="text-xl-center text-secondary">Información general del paciente</h5>
+        
+        <!--<div>
+            <audio controls>
+                <source src="{% static 'simple/Audios/info_general.mp3' %}" type="audio/ogg">
+            Your browser does not support the audio element.
+            </audio>
+        </div>-->
+        
+        {%for info in info_general%}
+            
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-primary">{{info}}</button>
+            
+        {%endfor%}
+
+    </div>
+    
+    <hr class="mt-2 mb-3"/>
+
+    {% endif %} 
+
+    {%if motivo_consulta %}
+
+        
+    <div class="hallazgos" style="margin-bottom: 25px;">
+        <h5 class="text-xl-center text-secondary">Motivo de consulta</h5>
+        
+	<!--<div>
+            <audio controls>
+                <source src="{% static 'simple/Audios/motivo_consulta.mp3' %}" type="audio/ogg">
+            Your browser does not support the audio element.
+            </audio>
+        </div>-->
+        {%for motivo in motivo_consulta%}
+            
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-outline-primary">{{motivo}}</button>
+            
+        {%endfor%}
+
+    </div>
+    
+    <hr class="mt-2 mb-3"/>
+    
+    {% endif %}
+
+
+    {%if diagnostico %}
+
+        
+    <div class="hallazgos" style="margin-bottom: 25px;">
+        <h5 class="text-xl-center text-secondary">Diagnóstico</h5>
+        <!--<div>
+            <audio controls>
+                <source src="{% static 'simple/Audios/diagnostico.mp3' %}" type="audio/ogg">
+            Your browser does not support the audio element.
+            </audio>
+        </div>-->
+        {%for dgn in diagnostico%}
+            
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-warning">{{dgn}}</button>
+            
+        {%endfor%}
+
+    </div>
+    
+    <hr class="mt-2 mb-3"/>
+    
+    {% endif %}
+
+    {% if hallazgos_ausentes or hallazgos_presentes %}
+
+        <div class="hallazgos" style="margin-bottom: 25px;">
+            <h5 class="text-xl-center text-secondary">Hallazgos</h5>
+        </div>
+
+    {% endif %}
+
+    {%if hallazgos_ausentes %}
+    <div class="hallazgos" style="margin-bottom: 25px;">
+            <div>
+                <button style="margin-top: 10px; margin-bottom: 10px;" class="btn btn-success">Descartados</button>
+            </div>
+            <!--<div>
+                <audio controls>
+                    <source src="{% static 'simple/Audios/hallazgos_ausentes.mp3' %}" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>-->
+        {%for hall in hallazgos_ausentes%}
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-outline-success">{{hall}}</button>
+        {%endfor%}
+    </div>
+    {% endif %}
+
+    
+    {%if hallazgos_presentes %}
+        <div class="hallazgos" style="margin-bottom: 25px;">
+            <div>
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-danger">Observados</button>
+            </div>
+            <!--<div>
+                <audio controls>
+                    <source src="{% static 'simple/Audios/hallazgos_presentes.mp3' %}" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>-->
+            {%for hall in hallazgos_presentes%}
+                        <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-outline-danger">{{hall}}</button>
+                {%endfor%}
+        </div>
+
+        <hr class="mt-2 mb-3"/>
+
+    {% endif %}
+    
+
+    {% if examenes %}
+
+        <div class="hallazgos" style="margin-bottom: 25px;">
+            <h5 class="text-xl-center text-secondary">Analítica</h5>
+        </div>
+
+    {% endif %}
+
+
+    {%if examenes %}
+        <div class="hallazgos" style="margin-bottom: 25px;">
+            <div>
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-info">Resultados</button> 
+            </div>    
+            <!--<div>
+                <audio controls>
+                    <source src="{% static 'simple/Audios/examenes.mp3' %}" type="audio/ogg">
+                Your browser does not support the audio element.
+                </audio>
+            </div>-->
+            {%for exm in examenes%}
+                        <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-outline-info">{{exm}}</button>
+            {%endfor%}
+        </div>
+
+        <hr class="mt-2 mb-3"/>
+
+    {% endif %}
+
+
+    {% if procedimientos_ausentes or procedimientos_presentes %}
+
+        <div class="hallazgos" style="margin-bottom: 25px;">
+            <h5 class="text-xl-center text-secondary">Procedimientos</h5>
+        </div>
+
+    {% endif %}
+
+    {%if procedimientos_ausentes %}
+    <div class="hallazgos" style="margin-bottom: 25px;">    
+            <div>
+                <button style="margin-top: 10px; margin-bottom: 10px;" class="btn btn-dark">Descartados</button> 
+            </div>
+            <!--<div>
+                <audio controls>
+                    <source src="{% static 'simple/Audios/procedimientos_ausentes.mp3' %}" type="audio/ogg">
+                Your browser does not support the audio element.
+                </audio>
+            </div>-->
+        {%for prc in procedimientos_ausentes%}
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-outline-dark">{{prc}}</button>
+        {%endfor%}
+    </div>
+    {% endif %}
+
+    
+    {%if procedimientos_presentes %}
+        <div class="hallazgos" style="margin-bottom: 25px;">
+            <div>
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-info">Realizados</button> 
+            </div>    
+            <!--<div>
+                <audio controls>
+                    <source src="{% static 'simple/Audios/procedimientos_presentes.mp3' %}" type="audio/ogg">
+                Your browser does not support the audio element.
+                </audio>
+            </div>-->
+            {%for prc in procedimientos_presentes%}
+                        <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-outline-info">{{prc}}</button>
+            {%endfor%}
+        </div>
+
+        <hr class="mt-2 mb-3"/>
+
+    {% endif %}
+
+
+    {% if tratamientos_ausentes or tratamientos_presentes %}
+
+    <div class="hallazgos" style="margin-bottom: 25px;">
+        <h5 class="text-xl-center text-secondary">Tratamientos</h5>
+    </div>
+
+    {% endif %}
+
+    {%if tratamientos_ausentes %}
+    <div class="hallazgos" style="margin-bottom: 25px;">
+            <div>
+                <button style="margin-top: 10px; margin-bottom: 10px;" class="btn btn-secondary">Sin efecto positivo</button> 
+            </div>
+            <!--<div>
+                <audio controls>
+                    <source src="{% static 'simple/Audios/tratamientos_ausentes.mp3' %}" type="audio/ogg">
+                Your browser does not support the audio element.
+                </audio>
+            </div>-->
+        {%for trat in tratamientos_ausentes%}
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-outline-secondary">{{trat}}</button>
+        {%endfor%}
+    </div>
+    {% endif %}
+
+
+    {%if tratamientos_presentes %}
+        <div class="hallazgos" style="margin-bottom: 25px;">
+            <div>
+                <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-success">Con efecto positivo</button> 
+            </div>    
+            <!--<div>
+                <audio controls>
+                    <source src="{% static 'simple/Audios/tratamientos_presentes.mp3' %}" type="audio/ogg">
+                Your browser does not support the audio element.
+                </audio>
+            </div>-->
+            {%for trat in tratamientos_presentes%}
+                        <button style="margin-top: 5px; margin-bottom: 5px;" class="btn btn-outline-success">{{trat}}</button>
+            {%endfor%}
+        </div>
+
+        <hr class="mt-2 mb-3"/>
+
+    {% endif %}
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(
+        function(){
+            $("#extraer_info").click(function () {
+                $("#cargando").show("slow");
+                $("#spinner").show("slow");
+                const hallazgos_presentes = []
+        });
+
+    });
+</script>
+</body>
+</html>

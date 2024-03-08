@@ -1,0 +1,67 @@
+.body{
+    /* La nueva sintaxis necesaria para navegadores apegados al estandar (IE 10 y Firefox 10 en adelante), sin prefijo */
+    /*background: linear-gradient(to bottom, #FFFFFF, #ABE7BA);*/
+
+}
+
+.menu{
+    margin-bottom: 30px;
+}
+
+.titulo{
+    color: #595A5C;
+    margin-bottom: 30px;
+    font-family: verdana;
+}
+
+/*
+.wrapper{
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  text-align: center;
+}
+
+div::after {
+  content: "";
+  background: url(../images/simple.jpg);
+  background-repeat: repeat;
+  background-size: 100% 100%;
+  background-position: top center;
+  opacity: 0.05;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+*/
+
+div.results{
+    text-align: center;
+    color: gray;
+}
+div.results table {
+       margin: 0 auto;
+       text-align: left;
+}
+
+div.entidades{
+    text-align: center;
+    color: #595A5C;
+}
+div.entidades table {
+       margin: 0 auto;
+       text-align: left;
+}
+
+div.hallazgos{
+    text-align: center;
+    color: #595A5C;
+}
+div.hallazgos table {
+       margin: 0 auto;
+       text-align: left;
+}
