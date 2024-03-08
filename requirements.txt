@@ -1,0 +1,7 @@
+pip install django
+pip install bootstrap4
+pip install -U spacy
+python -m spacy download en_core_web_sm
+python -m spacy download en_core_web_trf
+pip install scikit-learn
+pip install huggingface-hub

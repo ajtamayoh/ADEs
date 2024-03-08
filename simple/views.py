@@ -2,7 +2,7 @@ from django.shortcuts import render
 import spacy
 import re
 from spacy.language import Language
-from spacy_language_detection import LanguageDetector
+#from spacy_language_detection import LanguageDetector
 import sklearn
 from joblib import load
 #from transformers import pipeline
