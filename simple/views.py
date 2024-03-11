@@ -96,11 +96,14 @@ def index(request):
 
     s_original = texto # Applied the simple sentence tokenization
 
-    SDN_ents = []
-    LNER_ents = []
-    PRO_ents = []
-    NegNER_sco = []
-    Unc_sco = []
+    #SDN_ents = []
+    #LNER_ents = []
+    #PRO_ents = []
+    #NegNER_sco = []
+    #Unc_sco = []
+    ADEs_ents = []
+
+    '''
 
     try:
         #OSR detection and linking with negation ( + Uncertainty Scope Detection )
@@ -190,13 +193,29 @@ def index(request):
 
     #print("EL TEXTO: ", texto)
 
+    '''
+
+    try:
+        #ADEs
+        ADEs_model_id = "ajtamayoh/bert-finetuned-ADEs_model_1"
+        api_token = "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"
+        ADEs_entities = query(s_original, ADEs_model_id, api_token)
+        ADEs_ents_ld = grouping_entities(ADEs_entities)
+        for et in ADEs_ents_ld:
+            ADEs_ents.append(et["word"])
+            texto = texto.replace(et["word"], '<button class="btn btn-warning">'+et["word"]+'</button>')
+
+    except:
+        print("Problems with ADEs")
+
     context = {
         'msg': texto,
-        'Diseases': SDN_ents,
-        'Procedures': PRO_ents,
-        'Organisms': LNER_ents,
-        'Neg_unc': NegNER_sco,
-        'Unc': Unc_sco,
+        #'Diseases': SDN_ents,
+        #'Procedures': PRO_ents,
+        #'Organisms': LNER_ents,
+        #'Neg_unc': NegNER_sco,
+        #'Unc': Unc_sco,
+        'ADEs': ADEs_ents,
     }
     
     return render(request, 'simple/index.html', context)
