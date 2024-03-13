@@ -12,8 +12,8 @@
 <body class="body">
     <div class="container">
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary" style="margin-bottom: 20px;">
-            <a class="navbar-brand" href="http://18.207.202.129:8000/ADEs/" style="margin-left: 20px;">ADEs</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 20px;">
+            <a class="navbar-brand" href="http://18.207.202.129:8000/ades/" style="margin-left: 20px;">ADEs</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="acerca_de_simple">About Sonatafy ADEs Demo</a>
+                  <a class="nav-link" href="about_ades">About Sonatafy ADEs Demo</a>
                 </li>
                 <!--<li class="nav-item">
                   <a class="nav-link" href="metodologia.html" disabled>Metodología</a>
@@ -30,7 +30,7 @@
 		<a class="nav-link" href="historias_clinicas" disabled>Data Samples</a>
 		</li>-->          
                 <li class="nav-item">
-                  <a class="nav-link" href="creditos" disabled>Credits</a>
+                  <a class="nav-link" href="credits" disabled>Credits</a>
                 </li>
 		<!--<li class="nav-item">
                 <a class="nav-link" href="agradecimientos" disabled>Agradecimientos</a>
@@ -43,7 +43,7 @@
           <div class="text-xl-center text-secondary" style="margin-top: 30px; margin-bottom: 20px;">
             <h1>Automatic Detection of Adverse Drug Effects<p style="font-size: 12px">Sonatafy Demo</p></h1>
             <!--<h3>Adverse Drug Effects Automatic Detection</h3>-->
-        </div>
+          </div>
 
     <div style="margin-bottom: 50px;">
         <form name="datos" enctype="multipart/form-data" method="POST" action="">{% csrf_token %}
@@ -55,10 +55,10 @@
 		     <span class="input-group-text">Data samples</span> 
 		 </div>&nbsp;&nbsp;
 		<div>
-		    <button class="btn btn-secondary" id="h1">Sample 1</button>
+		    <button class="btn btn-primary" id="h1">Sample 1</button>
                 </div>&nbsp;&nbsp;
 		<div>
-                    <button class="btn btn-secondary" id="h2">Sample 2</button>
+                    <button class="btn btn-primary" id="h2">Sample 2</button>
                 </div>&nbsp;&nbsp;
                 <!--
                 <div>
@@ -66,15 +66,15 @@
                 </div>&nbsp;&nbsp;
                 -->
                 <div>
-                    <button class="btn btn-secondary" id="h4">Sample 3</button>
+                    <button class="btn btn-primary" id="h4">Sample 3</button>
                 </div>&nbsp;&nbsp;
                 <div>
-                    <button class="btn btn-secondary" id="h5">Sample 4</button>
+                    <button class="btn btn-primary" id="h5">Sample 4</button>
                 </div>
 		</div>
 
 		<div>
-			<textarea class="form-control" type="text" id="t1" name="texto1" rows="5" placeholder="Type or paste your text here;..."></textarea>
+			<textarea class="form-control" type="text" id="t1" name="texto1" rows="5" placeholder="Type or paste your text here..."></textarea>
 		</div>               
 
 		<div class="input-group mb-3" style="margin-top: 10px;">
@@ -87,8 +87,10 @@
   			</div>
 		</div>
 
-                <input class="btn btn-secondary" id="extraer_info" type="submit" value="Submit"/> 
-                {% if not hallazgos_presentes %}
+                <input class="btn btn-primary" id="extraer_info" type="submit" value="Submit"/>
+		                	
+
+		{% if not hallazgos_presentes %}
                 <div class="d-flex align-items-center" style="display: none; margin-top: 10px;">
                     <strong id="cargando" style="display: none;">Loading... </strong>
                     <div class="spinner-border ml-auto" id="spinner" style="display: none;" role="status" aria-hidden="true"></div>

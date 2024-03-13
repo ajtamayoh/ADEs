@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9bm!@ployn)7rzv@3785-=p(_@5(@i-b6!owqssieatn%e9xns'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sonatafyai.com', 'www.sonatafyai.com' , '18.207.202.129']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sonatafyai.com', 'www.sonatafyai.com' , '18.207.202.129', 'ec2-18-207-202-129.compute-1.amazonaws.com']
 
 
 # Application definition

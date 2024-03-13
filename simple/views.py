@@ -84,7 +84,7 @@ def index(request):
     if request.method == "POST":
         if request.POST['texto1'] != "":
             texto = request.POST['texto1']
-        else:
+        elif request.POST['texto2'] != "":
             texto = request.FILES['texto2'].read().decode('utf-8')
             #with open(request.FILES["texto2"], 'r', encoding="UTF-8") as f:
                 #texto = f.read()
@@ -202,8 +202,9 @@ def index(request):
         ADEs_entities = query(s_original, ADEs_model_id, api_token)
         ADEs_ents_ld = grouping_entities(ADEs_entities)
         for et in ADEs_ents_ld:
+            print(et["word"])
             ADEs_ents.append(et["word"])
-            texto = texto.replace(et["word"], '<button class="btn btn-warning">'+et["word"]+'</button>')
+            texto = texto.lower().replace(et["word"], '<button class="btn btn-warning">'+et["word"]+'</button>')
 
     except:
         print("Problems with ADEs")
@@ -220,17 +221,17 @@ def index(request):
     
     return render(request, 'simple/index.html', context)
 
-def acerca_de_simple(request):
+def about_ades(request):
 
-    return render(request, 'simple/acerca_de_simple.html')
+    return render(request, 'simple/about_ades.html')
 
 def historias_clinicas(request):
 
     return render(request, 'simple/historias_clinicas.html')
 
-def creditos(request):
+def credits(request):
 
-    return render(request, 'simple/creditos.html')
+    return render(request, 'simple/credits.html')
 
 def agradecimientos(request):
 
