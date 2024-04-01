@@ -1,5 +1,6 @@
 django
 bootstrap4
+django-cors-headers
 -U spacy
 scikit-learn
 huggingface-hub

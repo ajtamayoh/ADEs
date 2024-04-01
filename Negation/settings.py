@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9bm!@ployn)7rzv@3785-=p(_@5(@i-b6!owqssieatn%e9xns'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sonatafyai.com', 'www.sonatafyai.com' , '18.207.202.129', 'ec2-18-207-202-129.compute-1.amazonaws.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'http://sonatafyai.com', 'http://www.sonatafyai.com', 'https://sonatafyai.com', 'https://www.sonatafyai.com', '44.211.140.180', 'sonatafyai.com']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'simple',
     'bootstrap4',
    ]
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -120,12 +122,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = '/home/ubuntu/static_simple'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = ( os.path.join('static'), )
+STATIC_ROOT = '/home/ubuntu/ADEs/simple/static'
+STATIC_URL = 'home/ubuntu/static_ades/'
+#STATICFILES_DIRS = ( os.path.join('static_ades'), )
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuración de X-Frame-Options para permitir la carga en iframes desde cualquier origen
+X_FRAME_OPTIONS = 'ALLOWALL'
+
+# Configuración de CSP para permitir iframes
+CSP_DEFAULT_SRC = ("'self'", "https://sonatafyai.com")
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Configuración CORS
+CORS_ORIGIN_ALLOW_ALL = True
+
+CSRF_TRUSTED_ORIGINS = ['*']
+
+CSRF_COOKIE_SAMESITE = None

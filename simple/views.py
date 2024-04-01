@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt
 import spacy
 import re
 from spacy.language import Language
@@ -10,6 +12,7 @@ import requests
 from huggingface_hub.inference_api import InferenceApi
 
 #For Models from Hugging Face
+@csrf_exempt
 def query(payload, model_id, api_token):
 	headers = {"Authorization": f"Bearer {api_token}"}
 	API_URL = f"https://api-inference.huggingface.co/models/{model_id}"
@@ -17,6 +20,7 @@ def query(payload, model_id, api_token):
 	return response.json()
 
 #Post-processing for Models based on LM
+@csrf_exempt
 def grouping_entities(pred):
     import re
     output = []
@@ -50,6 +54,7 @@ def grouping_entities(pred):
 
     return output
 
+@csrf_exempt
 def index(request):
 
     #Para despertar los modelos del API de Hugging Face.
@@ -84,8 +89,8 @@ def index(request):
     if request.method == "POST":
         if request.POST['texto1'] != "":
             texto = request.POST['texto1']
-        elif request.POST['texto2'] != "":
-            texto = request.FILES['texto2'].read().decode('utf-8')
+        #elif request.POST['texto2'] != "": #if the option to upload a file is available, uncomment this and the following line.
+        #    texto = request.FILES['texto2'].read().decode('utf-8')
             #with open(request.FILES["texto2"], 'r', encoding="UTF-8") as f:
                 #texto = f.read()
             #print(texto)
@@ -204,7 +209,7 @@ def index(request):
         for et in ADEs_ents_ld:
             print(et["word"])
             ADEs_ents.append(et["word"])
-            texto = texto.lower().replace(et["word"], '<button class="btn btn-warning">'+et["word"]+'</button>')
+            texto = texto.lower().replace(et["word"], '<button class="btn btn-warning no-link">'+et["word"]+'</button>')
 
     except:
         print("Problems with ADEs")
@@ -229,6 +234,7 @@ def historias_clinicas(request):
 
     return render(request, 'simple/historias_clinicas.html')
 
+#@csrf_protect
 def credits(request):
 
     return render(request, 'simple/credits.html')

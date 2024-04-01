@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 import os
 import sys
 
+path = '/home/ubuntu/ADEs'
+if path not in sys.path:
+    sys.path.insert(0, path)
+
 os.environ['DJANGO_SETTINGS_MODULE'] = 'Negation.settings'
 
 ## Uncomment the lines below depending on your Django version
