@@ -1,0 +1,331 @@
+{% load static%}
+<html>
+
+<head lang="en-US">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'simple/css/style.css' %}">-->
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Josh's Design - Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom styles -->
+  <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+
+  <style>
+
+	body {
+	  font-family: 'Montserrat', Times, serif;
+	  color: #000000;
+	}
+
+	/* Link styles */
+	a,
+	a:link,
+	a:hover,
+	a:visited,
+	a:active {
+	  color: #FFFFFF;
+	}
+
+	/* Page Styles */
+	main.main-content {
+	  padding-top: 10px;
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper button.generate-results {
+	  background: linear-gradient(
+		180deg,
+		#89e2f7 -1.83%,
+		#006ecc 73%,
+		#0162b4 98.83%
+	  );
+	  font-weight: bold;
+	  color: #ffffff;
+	  border-color: #ffffff;
+	  border-radius: 0;
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper button.generate-results i {
+	  margin-left: 8px;
+	}
+
+	.page-content
+	  .fancy-chat
+	  .fancy-chat-wrapper
+	  .sample-list
+	  button.sample.active {
+	  font-weight: bold;
+	  background-color: rgb(243, 243, 243);
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper .highlight-info .medication span {
+	  height: 20px;
+	  width: 20px;
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper .highlight-info .side-effects span {
+	  height: 20px;
+	  width: 20px;
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper .fancy-chat-area textarea {
+	  resize: none;
+	  border-radius: 4px;
+	  border-color: rgb(228, 228, 228);
+	}
+
+	a {
+	    color: inherit; /* Utiliza el color del texto padre */
+    	    text-decoration: none; /* Quita el subrayado */
+	}
+
+	.description {
+
+	    margin-top: 20px;
+	    align-items: center;
+	    justify-content: center;
+	}
+
+	.title {
+	    margin-top: 20px;
+	    text-align: center;
+	}
+
+        .div-textarea-style {
+        /*width: 840px;*/ /* Same width as cols=30 */
+        height: 145px; /* Same height as rows=4 */
+        border: 1px solid #e5e5e5;/* Border style */
+        border-radius: 5px; /* Borde redondeado */
+        padding: 25px; /* Padding for inner content */
+        overflow-y: auto; /* Enable vertical scrollbar if content overflows */
+        }
+
+	@media only screen and (max-width: 768px) {
+
+	.container {
+	    width: 100%!important;
+	    padding: 0px!important;
+	    margin: 0px!important;
+	}
+
+	    .px-5 {
+		padding-right: 20px !important;
+		padding-left: 20px !important;
+	    }
+
+	    .d-flex {
+		display: block !important;
+	    }
+
+	.pt-4 {
+	    padding-top: 0px !important;
+	}
+
+
+	button.sample btn px-4 fw-bold {
+
+	    text-align: center;
+	    width: 100%;
+	    border-bottom: 1px solid #ccc;
+	    border-radius: 0px;
+
+	}
+
+	    .ms-5 {
+		margin: 40px auto !important;
+		text-align: center!important;
+	    }
+
+	}
+
+  </style>
+
+
+</head>
+
+<body class="body">
+
+<main class="main-content">
+    <div class="container page-content pb-5">
+      <!--
+      <div class="title">
+         <h1>Automatic Detection of Adverse Drug Effects</h1>
+      </div>
+      -->
+
+      <form class="fancy-chat" name="datos" enctype="multipart/form-data" method="POST" action="">{% csrf_token %}
+        <div class="fancy-chat-wrapper px-5 pt-4 pb-3">
+          <ol class="step-list d-flex justify-content-between">
+            <li>Choose <b>A Sample Request</b></li>
+
+            <li>Click <b>Generate Results</b></li>
+
+            <li>Identify Critical Data <b>In Seconds!</b></li>
+          </ol>
+
+          <div class="sample-list d-flex align-items-center justify-content-between fs-6 mb-3">
+            <button type="button" class="sample btn px-4 fw-bold" id="h1">
+              Sample Request 1
+            </button>
+
+            <button type="button" class="sample btn px-4 fw-bold" id="h2">
+              Sample Request 2
+            </button>
+
+            <button type="button" class="sample btn px-4 fw-bold" id="h3">
+              Sample Request 3
+            </button>
+
+            <button type="button" class="sample btn px-4 fw-bold" id="h4">
+              Sample Request 4
+            </button>
+          </div>
+
+	  {% if msg %}
+		<div class="div-textarea-style fancy-chat-area mb-3" id="response">
+			{{ msg|safe }}
+		</div> 
+	  {% else %}
+          <div class="fancy-chat-area mb-3">
+            <textarea class="w-100 p-4 fs-6 js-fancy-chat" name="texto1" id="t1" cols="30" rows="4" id="text" maxlength="360"></textarea>
+          </div>
+	  {% endif %}
+
+
+          <div class="request-results d-flex align-items-center">
+            <button type="submit" class="generate-results btn px-4 py-2" id="extract_info">
+              Generate Results<i class="bi bi-stars"></i>
+            </button>
+	     {% if not hallazgos_presentes %}
+            <div class="d-flex align-items-center" style="display: none; margin-top: 10px; margin-left: 5px;">
+                <!--<strong id="cargando" style="display: none; margin-right: 10px;">Analyzing </strong>-->
+                <div class="spinner-border ml-auto" id="spinner" style="display: none;" role="status" aria-hidden="true"></div>
+            </div>
+            {% endif %}
+	    
+            <a href="https://sonatafyai.com/demos/ades"><button type="button" class="btn btn-secondary" onclick="" style="margin-left: 5px">Reset Results</button></a>
+
+            <!-- <button type="button" class="generate-results btn px-4 py-2">
+              Clear Results<i class="bi bi-stars"></i>
+            </button> -->
+
+            <ul class="list-unstyled d-flex highlight-info ms-5 align-items-center mb-0">
+              <li class="medication d-flex align-items-center">
+               <span style="display: inline-block; background-color: skyblue; margin-right: 0.5rem;"></span> Medication
+              </li>
+
+              <li class="side-effects d-flex align-items-center ms-5">
+                <span class="d-inline-block bg-danger me-2"></span> Adverse Side Effect
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+      <!-- Josh's chat design ENDS -->
+     <!--
+      <div class="description">
+
+          <p>Information extraction plays a crucial role in the clinical domain by enabling the automated extraction of relevant medical information from unstructured text sources such as electronic health records (EHRs), clinical notes, research articles, and drug labels. In this context, information extraction techniques facilitate the identification and extraction of key entities, relationships, and events pertaining to patient diagnoses, treatments, medications, adverse reactions, and other clinically relevant information. By automating the extraction process, healthcare providers can streamline clinical workflows, enhance decision-making processes, improve patient care outcomes, and facilitate medical research and analysis on a large scale.
+          </p>
+
+          <p>This demo is trained to tackle the problem of information extraction in the medical field as a sequence labeling one, which is a fundamental task in natural language processing (NLP) that involves assigning labels to individual tokens in a sequence of text. To do this task, usually named entity recognition (NER), the BIO (Begin, Inside, Outside) schema has been used to annotate entities such as drugs and adverse effects within clinical text. Under this schema, each token in the input text is labeled with a tag indicating whether it represents the beginning (B), inside (I), or outside (O) of a named entity. This structured labeling scheme allows for the accurate identification and delineation of multi-token entities, which is essential for downstream tasks such as information retrieval, question answering, and clinical decision support systems.
+          </p>
+
+          <p>A Fine-tuning with the pre-trained language models called BERT (Bidirectional Encoder Representations from Transformers) for named entity recognition (NER) was carried out for this demo. It's a powerful approach to address the task of identifying drugs mentions and their adverse effects in clinical text. By leveraging large-scale pre-trained language representations, fine-tuning enables the model to learn domain-specific patterns and semantic representations from annotated clinical data. This fine-tuning process involves adjusting the parameters of the pre-trained model on a task-specific dataset, thereby tailoring the model to the nuances of the clinical domain and improving its performance on NER tasks. The ability to accurately identify drugs and adverse effects from vast amounts of clinical text is paramount for various applications in healthcare, including pharmacovigilance, drug safety monitoring, adverse event detection, and personalized medicine. Our model offers a scalable and efficient solution to this challenge, enabling healthcare organizations to analyze large volumes of clinical text data and extract actionable insights to support clinical decision-making and improve patient outcomes.
+          </p>
+
+          <p>This demonstration showcases a streamlined process wherein a given input text, sourced from the clinical domain such as an Electronic Health Record (EHR), undergoes rapid analysis to identify instances of drug mentions and their associated adverse effects within a matter of seconds. Leveraging advanced natural language processing (NLP) techniques and state-of-the-art models trained specifically for the clinical domain, the system swiftly parses through the input text, recognizing and categorizing drug entities along with their corresponding adverse effects. By harnessing the power of machine learning algorithms and pre-trained language models fine-tuned for named entity recognition (NER) tasks, this demo exemplifies the capability to automate and expedite the extraction of vital medical information from unstructured clinical text. This accelerated process not only enhances the efficiency of clinical data analysis and decision-making but also empowers healthcare professionals with timely insights into medication-related aspects of patient care, ultimately contributing to improved patient outcomes and safety.
+          </p>
+      </div>
+      -->
+
+    </div>
+
+    </div>
+  </main>
+
+  <!-- Third Party -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+    <script>
+
+	//It's not working well for now.
+
+        function reloadPage() {
+            var div1 = document.getElementById("text");
+            var div2 = document.getElementById("response");
+
+	    // Oculta el div de respuesta
+            div2.style.display = "none";
+            // Muestra el div de textarea
+            div1.style.display = "block";
+        }
+    </script>
+
+<script>
+    $(document).ready(
+        function(){
+            $("#extract_info").click(function () {
+                
+		$("#cargando").show("slow");
+                $("#spinner").show("slow");
+	    });
+
+	    $("#h1").click(function(event){
+			$("#t1").text("During your hypertension management, it's important to note that while taking lisinopril, you may experience a persistent dry cough, which is a common adverse effect. Additionally, if you're prescribed amlodipine, you might notice swelling in your ankles and feet, known as peripheral edema.");
+			event.preventDefault();
+	    });
+
+		$("#h2").click(function(event){
+			$("#t1").text("As your physician, it's important to discuss potential side effects of your medication regimen. For instance, while taking simvastatin you may experience muscle pain or weakness, a known adverse effect. Additionally, if prescribed omeprazole for acid reflux, be aware of the possibility of headaches or gastrointestinal discomfort as potential side effects.");
+			event.preventDefault();
+		});
+
+		$("#h3").click(function(event){
+			$("#t1").text("It's essential to be aware of potential adverse effects associated with your prescribed medications. For instance, while using albuterol inhalers for symptom relief, you may experience temporary tremors or increased heart rate as common side effects.");
+			event.preventDefault();
+		});
+
+		$("#h4").click(function(event){
+			$("#t1").text("In treating your hypertension, it's crucial to understand potential adverse effects of your prescribed medications. For example, while taking enalapril to lower blood pressure, you may experience a persistent dry cough as common side effect.");
+			event.preventDefault();
+		});
+	    
+
+    });
+</script>
+
+
+</body>
+
+</html>

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9bm!@ployn)7rzv@3785-=p(_@5(@i-b6!owqssieatn%e9xns'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'http://sonatafyai.com', 'http://www.sonatafyai.com', 'https://sonatafyai.com', 'https://www.sonatafyai.com', '44.211.140.180', 'sonatafyai.com']
 
@@ -143,6 +143,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Configuración CORS
 CORS_ORIGIN_ALLOW_ALL = True
 
-CSRF_TRUSTED_ORIGINS = ['*']
+#CSRF_TRUSTED_ORIGINS = []
 
 CSRF_COOKIE_SAMESITE = None

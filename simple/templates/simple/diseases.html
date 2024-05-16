@@ -1,0 +1,300 @@
+{% load static%}
+<html>
+
+<head lang="en-US">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'simple/css/style.css' %}">-->
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Josh's Design - Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Custom styles -->
+  <!--<link rel="stylesheet" type="text/css" href="style.css">-->
+
+  <style>
+
+	body {
+	  font-family: 'Montserrat', Times, serif;
+	  color: #000000;
+	}
+
+	/* Link styles */
+	a,
+	a:link,
+	a:hover,
+	a:visited,
+	a:active {
+	  color: #FFFFFF;
+	}
+
+	/* Page Styles */
+	main.main-content {
+	  padding-top: 10px;
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper button.generate-results {
+	  background: linear-gradient(
+		180deg,
+		#89e2f7 -1.83%,
+		#006ecc 73%,
+		#0162b4 98.83%
+	  );
+	  font-weight: bold;
+	  color: #ffffff;
+	  border-color: #ffffff;
+	  border-radius: 0;
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper button.generate-results i {
+	  margin-left: 8px;
+	}
+
+	.page-content
+	  .fancy-chat
+	  .fancy-chat-wrapper
+	  .sample-list
+	  button.sample.active {
+	  font-weight: bold;
+	  background-color: rgb(243, 243, 243);
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper .highlight-info .medication span {
+	  height: 20px;
+	  width: 20px;
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper .highlight-info .side-effects span {
+	  height: 20px;
+	  width: 20px;
+	}
+
+	.page-content .fancy-chat .fancy-chat-wrapper .fancy-chat-area textarea {
+	  resize: none;
+	  border-radius: 4px;
+	  border-color: rgb(228, 228, 228);
+	}
+
+	a {
+	    color: inherit; /* Utiliza el color del texto padre */
+    	    text-decoration: none; /* Quita el subrayado */
+	}
+
+	.div-textarea-style {
+  	/*width: 840px;*/ /* Same width as cols=30 */
+  	height: 145px; /* Same height as rows=4 */
+  	border: 1px solid #e5e5e5;/* Border style */
+        border-radius: 5px; /* Borde redondeado */
+  	padding: 25px; /* Padding for inner content */
+  	overflow-y: auto; /* Enable vertical scrollbar if content overflows */
+	}
+
+		@media only screen and (max-width: 768px) {
+
+	.container {
+	    width: 100%!important;
+	    padding: 0px!important;
+	    margin: 0px!important;
+	}
+
+	    .px-5 {
+		padding-right: 20px !important;
+		padding-left: 20px !important;
+	    }
+
+	    .d-flex {
+		display: block !important;
+	    }
+
+	.pt-4 {
+	    padding-top: 0px !important;
+	}
+
+
+	button.sample btn px-4 fw-bold {
+
+	    text-align: center;
+	    width: 100%;
+	    border-bottom: 1px solid #ccc;
+	    border-radius: 0px;
+
+	}
+
+	    .ms-5 {
+		margin: 40px auto !important;
+		text-align: center!important;
+	    }
+
+	}
+
+
+  </style>
+
+
+</head>
+
+<body class="body">
+
+<main class="main-content">
+    <div class="container page-content pb-5">
+      <form class="fancy-chat" name="datos" enctype="multipart/form-data" method="POST" action="">{% csrf_token %}
+        <div class="fancy-chat-wrapper px-5 pt-4 pb-3">
+          <ol class="step-list d-flex justify-content-between">
+            <li>Choose <b>A Sample Request</b></li>
+
+            <li>Click <b>Generate Results</b></li>
+
+            <li>Identify Critical Data <b>In Seconds!</b></li>
+          </ol>
+
+          <div class="sample-list d-flex align-items-center justify-content-between fs-6 mb-3">
+            <button type="button" class="sample btn px-4 fw-bold" id="h1">
+              Sample Request 1
+            </button>
+
+            <button type="button" class="sample btn px-4 fw-bold" id="h2">
+              Sample Request 2
+            </button>
+
+            <button type="button" class="sample btn px-4 fw-bold" id="h3">
+              Sample Request 3
+            </button>
+
+            <button type="button" class="sample btn px-4 fw-bold" id="h4">
+              Sample Request 4
+            </button>
+          </div>
+
+	  {% if msg %}
+		<div class="div-textarea-style fancy-chat-area mb-3" id="response" contenteditable="false">
+			{{ msg|safe }}
+		</div> 
+	  {% else %}
+          <div class="fancy-chat-area mb-3">
+            <textarea class="w-100 p-4 fs-6 js-fancy-chat" name="texto1" id="t1" cols="30" rows="4" maxlength="360"></textarea>
+          </div>
+	  {% endif %}
+
+
+          <div class="request-results d-flex align-items-center">
+            <button type="submit" class="generate-results btn px-4 py-2" id="extract_info">
+              Generate Results<i class="bi bi-stars"></i>
+            </button>
+	     {% if not hallazgos_presentes %}
+            <div class="d-flex align-items-center" style="display: none; margin-top: 10px; margin-left: 5px;">
+                <!--<strong id="cargando" style="display: none; margin-right: 10px;">Analyzing </strong>-->
+                <div class="spinner-border ml-auto" id="spinner" style="display: none;" role="status" aria-hidden="true"></div>
+            </div>
+            {% endif %}
+	    
+            <a href="https://sonatafyai.com/demos/diseases"><button type="button" class="btn btn-secondary" onclick="" style="margin-left: 5px">Reset Results</button></a>
+
+            <!-- <button type="button" class="generate-results btn px-4 py-2">
+              Clear Results<i class="bi bi-stars"></i>
+            </button> -->
+
+            <ul class="list-unstyled d-flex highlight-info ms-5 align-items-center mb-0">
+              <li class="side-effects d-flex align-items-center ms-5">
+                <span class="d-inline-block bg-danger me-2"></span> Diseases & Symptoms
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+  	
+	
+
+      </form>
+      <!-- Josh's chat design ENDS -->
+    </div>
+
+    </div>
+  </main>
+
+  <!-- Third Party -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+
+
+    <script>
+
+	//It's not working well for now.
+
+        function reloadPage() {
+            var div1 = document.getElementById("t1");
+            var div2 = document.getElementById("response");
+
+	    // Oculta el div de respuesta
+            div2.style.display = "none";
+            // Muestra el div de textarea
+            div1.style.display = "block";
+        }
+    </script>
+
+<script>
+    $(document).ready(
+        function(){
+            $("#extract_info").click(function () {
+                
+		$("#cargando").show("slow");
+                $("#spinner").show("slow");
+	    });
+
+	    $("#h1").click(function(event){
+			/*$("#response").hide();
+        		$("#t1").show();*/
+			$("#t1").text("Patient X presented with symptoms of persistent cough, fever, and fatigue, suggestive of a respiratory infection. Upon examination, a chest X-ray revealed infiltrates consistent with pneumonia. Treatment was initiated with antibiotics. Additionally, the patient reported a history of hypertension and was prescribed medication for blood pressure management.");
+			event.preventDefault();
+	    });
+
+		$("#h2").click(function(event){
+			$("#t1").text("Patient Y presented with symptoms of abdominal pain, nausea, and jaundice, suggestive of a possible liver disorder. Laboratory tests revealed elevated liver enzymes and bilirubin levels. Further evaluation with imaging studies confirmed the presence of gallstones.");
+			event.preventDefault();
+		});
+
+		$("#h3").click(function(event){
+			$("#t1").text("Patient Z presented with symptoms of frequent urination, increased thirst, and unexplained weight loss, suggestive of diabetes mellitus. Laboratory investigations revealed elevated fasting blood glucose and glycosylated hemoglobin (HbA1c) levels.");
+			event.preventDefault();
+		});
+
+		$("#h4").click(function(event){
+			$("#t1").text("Patient A presented with symptoms of chest pain, shortness of breath, and palpitations, suggestive of a cardiac condition. Electrocardiogram (ECG) findings indicated ST-segment elevation myocardial infarction (STEMI). Urgent cardiac catheterization revealed occlusion of the left anterior descending (LAD) coronary artery.");
+			event.preventDefault();
+		});
+	    
+
+    });
+</script>
+
+
+</body>
+
+</html>
