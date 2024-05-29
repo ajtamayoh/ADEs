@@ -27,7 +27,7 @@ def query2(payload, model_id, api_token, min_length, max_length):
         payload.update({
         "min_length": min_length,
         "max_length": max_length,
-        "temperature": 0.7,
+        "temperature": 0.9,
         "repetition_penalty": 1.2,
         "num_return_sequences": 1,
         })
@@ -274,6 +274,57 @@ def sonatafyassistant(request):
         LLM_model_id = "meta-llama/Llama-2-7b-chat-hf"
         #LLM_model_id = "Sonatafyai/BioGPT_DocBot_SonatafyAI_V1"
         api_token = "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"
+        payload = {"inputs": "Instructions: If you are a doctor, please give a medical concept based on the patient's description. (Do not leave uncomplete phrases) : \nPatient description: " + texto + "\nConcept: "}
+        response = query2(payload, LLM_model_id, api_token, 100, 500)
+        print(response)
+        try:
+            if response['error'] != '':
+                time.sleep(5)
+                response = query2(payload, LLM_model_id, api_token, 100, 500)
+                #response = response[0]['generated_text']
+        except:
+            response = response[0]['generated_text']
+            response = response.split(texto)
+            #response = "<b>User:</b> " + texto + "<br>" + "<b>Sonatafy Assistant:</b> "+ response[1]
+            
+            try:
+                response = response[1][:response[1].rfind('.')+1]
+                response = re.sub("Concept:","<b>Concept:</b>",response)
+            except:
+                response = response[1]
+                response = re.sub("Concept:","<b>Concept:</b>",response)
+            
+    context = {
+        'msg': texto,
+        'response': response,
+    }
+    
+    return render(request, 'simple/sonatafyassistant.html', context)
+
+
+@csrf_exempt
+def summarization(request):
+
+    texto = ""
+    try:
+        if request.method == "POST":
+            if request.POST['texto1'] != "":
+                texto = request.POST['texto1']
+    except:
+        pass
+
+    response = ""
+
+    if texto != "":
+        #Eliminar saltos de linea y doble espacio
+        texto = re.sub(r'\n+', ' ' ,texto)
+        texto = re.sub(r'\s+', ' ', texto)
+
+        response = ""
+        #Preparing the response
+        LLM_model_id = "meta-llama/Llama-2-7b-chat-hf"
+        #LLM_model_id = "Sonatafyai/BioGPT_DocBot_SonatafyAI_V1"
+        api_token = "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"
         payload = {"inputs": "Instructions: Summarize the following clinical document (Do not leave uncomplete phrases) : \nClinical document: " + texto + "\n<b>Summary</b>: "}
         response = query2(payload, LLM_model_id, api_token, 100, 500)
         print(response)
@@ -297,8 +348,100 @@ def sonatafyassistant(request):
         'response': response,
     }
     
-    return render(request, 'simple/sonatafyassistant.html', context)
+    return render(request, 'simple/summarization.html', context)
 
+
+@csrf_exempt
+def sentiment_analysis(request):
+
+    texto = ""
+    try:
+        if request.method == "POST":
+            if request.POST['texto1'] != "":
+                texto = request.POST['texto1']
+            #elif request.POST['texto2'] != "": #if the option to upload a file is available, uncomment this and the following line.
+            #    texto = request.FILES['texto2'].read().decode('utf-8')
+                #with open(request.FILES["texto2"], 'r', encoding="UTF-8") as f:
+                    #texto = f.read()
+                #print(texto)
+    except:
+        pass
+    #Eliminar saltos de linea y doble espacio
+    texto = re.sub(r'\n+', ' ' ,texto)
+    texto = re.sub(r'\s+', ' ', texto)
+
+    sentiment  = ""
+    confidence = 0.0
+
+    try:
+        #Symptoms to diagnosis
+        SA_model_id = "sonatafyai/Sentiment_Analysis_in_Social_Media_SonatafyAI_BERT_v1"
+        api_token = "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"     #token Sonatafy AI
+        response = query(texto, SA_model_id, api_token)
+        try:
+            if response['error'] != '':
+                time.sleep(5)
+                response = query(texto, S2D_model_id, api_token)
+        except:
+            sentiment  = response[0][0]['label']
+            confidence = response[0][0]['score']
+
+    except:
+        print("Problems with sentiment analysis")
+
+    context = {
+        'msg': texto,
+        'sentiment': sentiment,
+        'confidence': confidence,
+    }
+    
+    return render(request, 'simple/sentiment-analysis.html', context)
+
+@csrf_exempt
+def fake_news_detection(request):
+
+    texto = ""
+    try:
+        if request.method == "POST":
+            if request.POST['texto1'] != "":
+                texto = request.POST['texto1']
+            #elif request.POST['texto2'] != "": #if the option to upload a file is available, uncomment this and the following line.
+            #    texto = request.FILES['texto2'].read().decode('utf-8')
+                #with open(request.FILES["texto2"], 'r', encoding="UTF-8") as f:
+                    #texto = f.read()
+                #print(texto)
+    except:
+        pass
+    #Eliminar saltos de linea y doble espacio
+    texto = re.sub(r'\n+', ' ' ,texto)
+    texto = re.sub(r'\s+', ' ', texto)
+
+    label = ""
+    confidence = 0.0
+
+    try:
+        #Symptoms to diagnosis
+        FN_model_id = "sonatafyai/Fake_news_Detection_SonatafyAI_RoBERTa"
+        api_token = "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"     #token Sonatafy AI
+        response = query(texto, FN_model_id, api_token)
+        try:
+            if response['error'] != '':
+                time.sleep(5)
+                response = query(texto, FN_model_id, api_token)
+        except:
+            label = '<b>' + response[0][0]['label'] + ' news</b>.'
+            confidence = response[0][0]['score']
+
+    except:
+        print("Problems with fake news.")
+
+    context = {
+        'msg': texto,
+        'label': label,
+        'confidence': confidence,
+    }
+    
+    return render(request, 'simple/fake_news_detection.html', context)
 
 
 def about_ades(request):

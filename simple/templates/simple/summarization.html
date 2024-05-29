@@ -100,7 +100,7 @@
 
 	.div-textarea-style {
   	/*width: 840px;*/ /* Same width as cols=30 */
-  	height: 145px; /* Same height as rows=8 */
+  	height: 243px; /* Same height as rows=8 */
   	border: 1px solid #e5e5e5;/* Border style */
         border-radius: 5px; /* Borde redondeado */
   	padding: 25px; /* Padding for inner content */
@@ -161,7 +161,7 @@
 
             <li>Click <b>Generate Results</b></li>
 
-            <li>Get a concept <b>In Seconds!</b></li>
+            <li>Get a summary <b>In Seconds!</b></li>
           </ol>
 
           <div class="sample-list d-flex align-items-center justify-content-between fs-6 mb-3">
@@ -188,7 +188,7 @@
 		</div> 
 	  {% else %}
           <div class="fancy-chat-area mb-3">
-            <textarea class="w-100 p-4 fs-6 js-fancy-chat" name="texto1" id="t1" cols="30" rows="4"></textarea>
+            <textarea class="w-100 p-4 fs-6 js-fancy-chat" name="texto1" id="t1" cols="30" rows="8"></textarea>
           </div>
 	  {% endif %}
 
@@ -204,7 +204,7 @@
             </div>
             {% endif %}
 	    
-            <a href="https://sonatafyai.com/demos/sonatafyassistant"><button type="button" class="btn btn-secondary" onclick="" style="margin-left: 5px">Reset Results</button></a>
+            <a href="https://sonatafyai.com/demos/summarization"><button type="button" class="btn btn-secondary" onclick="" style="margin-left: 5px">Reset Results</button></a>
 
             <!-- <button type="button" class="generate-results btn px-4 py-2">
               Clear Results<i class="bi bi-stars"></i>
@@ -270,22 +270,22 @@
 	    $("#h1").click(function(event){
 			/*$("#response").hide();
         		$("#t1").show();*/
-			$("#t1").text("What are some potential causes of restrictive lung disease related to poor muscular effort, and can you provide some examples of conditions that may cause this?");
+			$("#t1").text("Emily Turner, a 29-year-old female, visited the clinic on March 15, 2024, for a preconception counseling appointment. Emily has a history of polycystic ovary syndrome (PCOS) and is concerned about her fertility. She has been taking Metformin 500 mg twice daily to manage her PCOS symptoms and has regular menstrual cycles. During the consultation, her vital signs were within normal limits, and her BMI was 24.2 kg/m². Emily was advised on the importance of maintaining a healthy weight and was given information on prenatal vitamins, including folic acid supplementation. She was also educated about the potential challenges related to PCOS and fertility and referred to a fertility specialist for further evaluation. Emily was encouraged to maintain a healthy lifestyle and scheduled for a follow-up visit in six months or sooner if she became pregnant.");
 			event.preventDefault();
 	    });
 
 		$("#h2").click(function(event){
-			$("#t1").text("Hi doctor,My son has storage pool defect. Now, his doctor suspects Crohn\\s disease on him. All cut tests will result in horrible bleeding time. Should hematology be involved? Should the doctors use coagulant as a precaution? Your further advice would be helpful. Thank you.");
+			$("#t1").text("Lisa Brown, a 32-year-old female, visited the clinic on August 5, 2024, for an annual wellness exam. Lisa has a history of seasonal allergies and mild asthma, controlled with an inhaler used as needed. She has been experiencing increased nasal congestion and sneezing over the past few weeks, which she attributes to the changing seasons. During the consultation, her vital signs were normal, and her BMI was 23.5 kg/m². Lisa was advised to continue using her current allergy medications, including a daily antihistamine and a nasal corticosteroid spray. She was also instructed on proper inhaler technique and given an updated asthma action plan. To address her seasonal allergies, she was advised to minimize exposure to allergens and consider using a HEPA air purifier at home. Lisa was scheduled for a follow-up visit in one year or sooner if her symptoms worsened.");
 			event.preventDefault();
 		});
 
 		$("#h3").click(function(event){
-			$("#t1").text("What to expect if I have Papillary carcinoma of the thyroid (Outlook/Prognosis)?");
+			$("#t1").text("Olivia Green, a 37-year-old female, came to the clinic on July 19, 2024, for a follow-up visit regarding her ongoing management of type 2 diabetes. Olivia has been on Metformin 1000 mg twice daily and recently started on Glimepiride 4 mg daily. She reported good adherence to her medication regimen but expressed concerns about occasional episodes of hypoglycemia. Her blood glucose log indicated fasting glucose levels between 90-110 mg/dL and occasional postprandial readings below 70 mg/dL. During the visit, her vital signs were normal, and her BMI was 28.0 kg/m². Her physical examination was unremarkable. Olivia was counseled on recognizing the signs of hypoglycemia and instructed to carry glucose tablets with her. Her Glimepiride dose was adjusted to 2 mg daily to reduce the risk of hypoglycemia. She was also encouraged to continue monitoring her blood glucose levels regularly and to follow a balanced diet and exercise routine. Olivia was scheduled for another follow-up in three months to evaluate her glycemic control and adjust her treatment plan if necessary.");
 			event.preventDefault();
 		});
 
 		$("#h4").click(function(event){
-			$("#t1").text("What is a potential complication of pancreatitis that may present with a palpable mass and symptoms such as dyspnea, ascites, and early satiety?");
+			$("#t1").text("Michael Thompson, a 52-year-old male, visited the clinic on October 10, 2024, for a follow-up appointment regarding his ongoing management of hypertension. Michael has been taking Lisinopril 20 mg once daily and Hydrochlorothiazide 25 mg once daily. He reported good adherence to his medication regimen but mentioned occasional dizziness when standing up quickly. His home blood pressure readings averaged 140/85 mmHg. During the visit, his vital signs were stable, with a blood pressure of 138/84 mmHg and a BMI of 27.5 kg/m². His physical examination was unremarkable. Michael was counseled on the importance of standing up slowly to prevent dizziness and was advised to monitor his blood pressure regularly. Given his blood pressure readings, his Lisinopril dose was increased to 40 mg daily. He was encouraged to maintain a low-sodium diet, engage in regular physical activity, and reduce weight. Michael was scheduled for another follow-up in three months to reassess his blood pressure and adjust his treatment plan if necessary.");
 			event.preventDefault();
 		});
 	    

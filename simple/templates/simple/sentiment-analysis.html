@@ -100,14 +100,14 @@
 
 	.div-textarea-style {
   	/*width: 840px;*/ /* Same width as cols=30 */
-  	height: 145px; /* Same height as rows=8 */
+  	height: 145px; /* Same height as rows=4 */
   	border: 1px solid #e5e5e5;/* Border style */
         border-radius: 5px; /* Borde redondeado */
   	padding: 25px; /* Padding for inner content */
   	overflow-y: auto; /* Enable vertical scrollbar if content overflows */
 	}
 
-	@media only screen and (max-width: 768px) {
+		@media only screen and (max-width: 768px) {
 
 	.container {
 	    width: 100%!important;
@@ -161,7 +161,7 @@
 
             <li>Click <b>Generate Results</b></li>
 
-            <li>Get a concept <b>In Seconds!</b></li>
+            <li>Sentiment Analysis<b> In Seconds!</b></li>
           </ol>
 
           <div class="sample-list d-flex align-items-center justify-content-between fs-6 mb-3">
@@ -177,18 +177,20 @@
               Sample Request 3
             </button>
 
+	    <!--
             <button type="button" class="sample btn px-4 fw-bold" id="h4">
               Sample Request 4
             </button>
+	    -->
           </div>
 
 	  {% if msg %}
 		<div class="div-textarea-style fancy-chat-area mb-3" id="response" contenteditable="false">
-			{{response|safe}}
+			{{msg|safe}}
 		</div> 
 	  {% else %}
           <div class="fancy-chat-area mb-3">
-            <textarea class="w-100 p-4 fs-6 js-fancy-chat" name="texto1" id="t1" cols="30" rows="4"></textarea>
+            <textarea class="w-100 p-4 fs-6 js-fancy-chat" name="texto1" id="t1" cols="30" rows="4" maxlength="360"></textarea>
           </div>
 	  {% endif %}
 
@@ -204,16 +206,17 @@
             </div>
             {% endif %}
 	    
-            <a href="https://sonatafyai.com/demos/sonatafyassistant"><button type="button" class="btn btn-secondary" onclick="" style="margin-left: 5px">Reset Results</button></a>
+            <a href="https://sonatafyai.com/demos/sentiment-analysis"><button type="button" class="btn btn-secondary" onclick="" style="margin-left: 5px">Reset Results</button></a>
 
             <!-- <button type="button" class="generate-results btn px-4 py-2">
               Clear Results<i class="bi bi-stars"></i>
             </button> -->
 
-           <!-- <ul class="list-unstyled d-flex highlight-info ms-5 align-items-center mb-0">
-                <span class="d-inline-block bg-danger me-2"></span> {% if msg %} <button type="button" class="btn btn-warning no-link" style="margin-left: 5px"> {{ response|safe }} </button>  {% endif  %}
+           <ul class="list-unstyled d-flex highlight-info ms-5 align-items-center mb-0">
+
+                <span class="d-inline-block bg-danger me-2"></span> {% if msg %} <button type="button" class="btn btn-warning no-link" style="margin-left: 5px">  <b>Classification:</b> {{ sentiment|safe }} </button> <!--| Confidence: {{confidence}}-->   {% endif  %}
               </li>
-            </ul>-->
+            </ul>
 
           </div>
         </div>
@@ -270,22 +273,22 @@
 	    $("#h1").click(function(event){
 			/*$("#response").hide();
         		$("#t1").show();*/
-			$("#t1").text("What are some potential causes of restrictive lung disease related to poor muscular effort, and can you provide some examples of conditions that may cause this?");
+			$("#t1").text("You know, I wasn't sure what to expect when I tried out this company's new product, but I've got to say, I'm pleasantly surprised! 😮 It's been performing really well so far, and it just works seamlessly. 👌 The design is sleek and modern, too. 😎 And their customer service team? Top-notch! Super responsive and really went the extra mile to make sure I was all set up. 💯 Looks like they've got their act together");
 			event.preventDefault();
 	    });
 
 		$("#h2").click(function(event){
-			$("#t1").text("Hi doctor,My son has storage pool defect. Now, his doctor suspects Crohn\\s disease on him. All cut tests will result in horrible bleeding time. Should hematology be involved? Should the doctors use coagulant as a precaution? Your further advice would be helpful. Thank you.");
+			$("#t1").text("Oh wow, your \"innovative\" product is really something else! 🙄 I love how it stopped working after just a few uses. 👏 And your customer service reps were s \"helpful\" when I called - putting me on hold for hours and then hanging up on me. 😂 What fantastic\"service\"! I'd give you 5 stars for wasting my time and money if I could. 🌟🌟🌟🌟🌟 Can't wait to see what crappy product you come up with next! 😝");
 			event.preventDefault();
 		});
 
 		$("#h3").click(function(event){
-			$("#t1").text("What to expect if I have Papillary carcinoma of the thyroid (Outlook/Prognosis)?");
+			$("#t1").text("@VirginAmerica partners with @Visa Checkout as mobile payment method to help boost mobile conversion rates #etailwest #payments #visa");
 			event.preventDefault();
 		});
 
 		$("#h4").click(function(event){
-			$("#t1").text("What is a potential complication of pancreatitis that may present with a palpable mass and symptoms such as dyspnea, ascites, and early satiety?");
+			$("#t1").text("");
 			event.preventDefault();
 		});
 	    
